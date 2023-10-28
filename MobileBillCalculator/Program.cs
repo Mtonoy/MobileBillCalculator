@@ -32,7 +32,7 @@ namespace MobileBillCalculator
             {
                 DateTime pulseEnd = start.AddSeconds(20);
                 decimal rate = IsPeakTime(start, pulseEnd, peakStartTime, peakEndTime) ? peakRate : offPeakRate;
-                Console.WriteLine("20 s Mobile Bill: " + rate + " Taka");
+                //Console.WriteLine("20 s Mobile Bill: " + rate + " Taka");
                 totalCost += rate;
 
                 start = pulseEnd;
