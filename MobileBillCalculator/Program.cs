@@ -31,7 +31,8 @@ namespace MobileBillCalculator
             while (start < end)
             {
                 DateTime pulseEnd = start.AddSeconds(20);
-                decimal rate = IsPeakTime(start, peakStartTime, peakEndTime) ? peakRate : offPeakRate;
+                decimal rate = IsPeakTime(start, pulseEnd, peakStartTime, peakEndTime) ? peakRate : offPeakRate;
+                Console.WriteLine("20 s Mobile Bill: " + rate + " Taka");
                 totalCost += rate;
 
                 start = pulseEnd;
@@ -40,9 +41,13 @@ namespace MobileBillCalculator
             return totalCost;
         }
 
-        static bool IsPeakTime(DateTime time, DateTime peakStartTime, DateTime peakEndTime)
+        static bool IsPeakTime(DateTime time, DateTime pulseEnd, DateTime peakStartTime, DateTime peakEndTime)
         {
             if (time.TimeOfDay >= peakStartTime.TimeOfDay && time.TimeOfDay <= peakEndTime.TimeOfDay)
+            {
+                return true;
+            }
+            else if (pulseEnd.TimeOfDay >= peakStartTime.TimeOfDay)
             {
                 return true;
             }
