@@ -47,7 +47,7 @@ namespace MobileBillCalculator
             {
                 return true;
             }
-            else if (pulseEnd.TimeOfDay >= peakStartTime.TimeOfDay)
+            else if (pulseEnd.TimeOfDay >= peakStartTime.TimeOfDay && pulseEnd.TimeOfDay <= peakEndTime.TimeOfDay)
             {
                 return true;
             }
